@@ -31,7 +31,10 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Test with pytest
       run: |
-        conda install pytest anyio pytest-asyncio pytest-tornasync pytest-trio pytest-twisted
+        conda install pytest anyio pytest-asyncio
+        pip install pytest-tornasync
+        pip install pytest-twisted
+        pip install pytest-trio
         pip install blobfile
         pip install aiohttp
         pytest
