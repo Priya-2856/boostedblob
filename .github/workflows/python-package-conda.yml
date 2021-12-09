@@ -33,4 +33,5 @@ jobs:
       run: |
         conda install pytest
         pip install blobfile
+        pip install aiohttp
         pytest
