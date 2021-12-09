@@ -37,4 +37,5 @@ jobs:
         pip install pytest-trio
         pip install blobfile
         pip install aiohttp
+        pip install twisted
         pytest
