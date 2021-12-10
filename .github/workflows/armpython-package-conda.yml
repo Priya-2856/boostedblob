@@ -27,3 +27,4 @@ armv64_job:
         pip install aiohttp
         pip install twisted
         pytest
+        deactivate'
