@@ -200,7 +200,7 @@ def listdir(path: Union[BasePath, str]) -> AsyncIterator[BasePath]:
 @listdir.register  # type: ignore
 async def _cloud_listdir(path: CloudPath) -> AsyncIterator[CloudPath]:
     async for entry in scandir(path):
-        assert isinstance(entry.path, type(path))
+        assert isinstance(entry.path, (path))
         yield entry.path
 
 
@@ -282,7 +282,7 @@ def listtree(path: Union[BasePath, str]) -> AsyncIterator[BasePath]:
 @listtree.register  # type: ignore
 async def _cloud_listtree(path: CloudPath) -> AsyncIterator[CloudPath]:
     async for entry in scantree(path):
-        assert isinstance(entry.path, type(path))
+        assert isinstance(entry.path, (path))
         yield entry.path
 
 
@@ -317,7 +317,7 @@ async def _azure_glob_scandir(path: AzurePath) -> AsyncIterator[DirEntry]:
             raise ValueError("Currently only supports wildcards inside the filename")
         pattern = _glob_to_regex(path.container)
         async for entry in _azure_list_containers(path.account):
-            assert isinstance(entry.path, type(path))
+            assert isinstance(entry.path, (path))
             if re.match(pattern, entry.path.container):
                 yield entry
         return
@@ -330,7 +330,7 @@ async def _azure_glob_scandir(path: AzurePath) -> AsyncIterator[DirEntry]:
     blob_prefix = path.blob.split("*", maxsplit=1)[0]
     prefix = AzurePath(account=path.account, container=path.container, blob=blob_prefix)
     async for entry in list_blobs(prefix, delimiter="/", allow_prefix=True):
-        assert isinstance(entry.path, type(path))
+        assert isinstance(entry.path, (path))
         if entry.path == path.parent.ensure_directory_like():
             # skip directory file marker of the parent, if present
             continue
@@ -345,7 +345,7 @@ async def _google_glob_scandir(path: GooglePath) -> AsyncIterator[DirEntry]:
             raise ValueError("Currently only supports wildcards inside the filename")
         pattern = _glob_to_regex(path.bucket)
         async for entry in _google_list_buckets():
-            assert isinstance(entry.path, type(path))
+            assert isinstance(entry.path, (path))
             if re.match(pattern, entry.path.bucket):
                 yield entry
         return
@@ -358,7 +358,7 @@ async def _google_glob_scandir(path: GooglePath) -> AsyncIterator[DirEntry]:
     blob_prefix = path.blob.split("*", maxsplit=1)[0]
     prefix = GooglePath(bucket=path.bucket, blob=blob_prefix)
     async for entry in list_blobs(prefix, delimiter="/", allow_prefix=True):
-        assert isinstance(entry.path, type(path))
+        assert isinstance(entry.path, (path))
         if entry.path == path.parent.ensure_directory_like():
             # skip directory file marker of the parent, if present
             continue
