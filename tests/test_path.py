@@ -4,7 +4,7 @@ import pytest
 
 from boostedblob.path import AzurePath, BasePath, GooglePath, LocalPath
 
-PATHS: Dict[Type[BasePath], Any] = {
+PATHS: Dict[[BasePath], Any] = {
     AzurePath: AzurePath("shantanutest", "container", "blob"),
     GooglePath: GooglePath("shantanutest", "blob"),
     LocalPath: LocalPath("blob"),
@@ -59,7 +59,7 @@ def test_path_methods():
         assert not path.is_relative_to(subsubpath)
 
         for other_path in PATHS.values():
-            if not isinstance(other_path, type(path)):
+            if not isinstance(other_path, (path)):
                 with pytest.raises(ValueError):
                     subsubpath.relative_to(other_path)
                 assert not subsubpath.is_relative_to(other_path)
