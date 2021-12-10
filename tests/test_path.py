@@ -4,7 +4,7 @@ import pytest
 
 from boostedblob.path import AzurePath, BasePath, GooglePath, LocalPath
 
-PATHS: Dict[BasePath, Any] = {
+PATHS: Dict[[BasePath], Any] = {
     AzurePath: AzurePath("shantanutest", "container", "blob"),
     GooglePath: GooglePath("shantanutest", "blob"),
     LocalPath: LocalPath("blob"),
