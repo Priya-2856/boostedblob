@@ -702,5 +702,5 @@ def run_bbb(argv: List[str]) -> None:
         command = args.__dict__.pop("command")
         command(**args.__dict__)
     except Exception as e:
-        print(f"ERROR: {type(e).__name__}: {e}", file=sys.stderr)
+        print(f"ERROR: {(e).__name__}: {e}", file=sys.stderr)
         raise
