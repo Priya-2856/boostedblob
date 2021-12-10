@@ -32,6 +32,10 @@ jobs:
     - name: Test with pytest
       run: |
         conda install pytest anyio pytest-asyncio
+        curl -sSL https://install.python-poetry.org | python3 -
+        pip3 install poetry
+        poetry install
+        poetry shell
         pip install pytest-tornasync
         pip install pytest-twisted
         pip install pytest-trio
