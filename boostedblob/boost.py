@@ -86,7 +86,7 @@ class BoostExecutor:
         return self
 
     async def __aexit__(
-        self, exc_type: Optional[Type[BaseException]], exc_value: Any, traceback: Any
+        self, exc_type: Optional[[BaseException]], exc_value: Any, traceback: Any
     ) -> None:
         self.shutdown = True
         if exc_type:
