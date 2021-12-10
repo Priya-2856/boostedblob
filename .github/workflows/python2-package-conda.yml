@@ -37,8 +37,4 @@ jobs:
         pip install blobfile
         pip install aiohttp
         pip install twisted
-        curl -sSL https://install.python-poetry.org | python3 -
-        pip3 install poetry
-        poetry install
-        poetry shell
         export BBB_TEST_LOCATIONS="az://shantanutest/container" ./test.sh
