@@ -37,4 +37,4 @@ jobs:
         pip install blobfile
         pip install aiohttp
         pip install twisted
-        export BBB_TEST_LOCATIONS="az://shantanutest/container" ./test.sh
+        ./test.sh
