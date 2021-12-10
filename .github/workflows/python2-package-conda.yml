@@ -39,4 +39,3 @@ jobs:
         pip install aiohttp
         pip install twisted
         pytest
-        .test
