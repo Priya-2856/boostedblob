@@ -16,11 +16,11 @@ jobs:
         python-version: 3.8
     - name: Install dependencies
       run: |
-        pip3 install blobfile
+        pip3 install boostedblob
         curl -sSL https://install.python-poetry.org | python3 -
         pip3 install poetry
         poetry install
         poetry shell
-   - name: Test with pytest
+    - name: Test with ./test.sh
       run: |
         ./test.sh
