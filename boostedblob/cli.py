@@ -20,7 +20,7 @@ def syncify(fn: Callable[..., Awaitable[T]]) -> Callable[..., T]:
             import uvloop
 
             if sys.version_info < (3, 9) or (
-                tuple(map(int, uvloop.__version__.split("."))) >= (0, 15, 0)  # type: ignore
+                tuple(map(int, uvloop.__version__.split("."))) >= (0, 15, 0)
             ):
                 uvloop.install()
         except ImportError:
