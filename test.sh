@@ -1,4 +1,4 @@
-set -ex
+#set -ex
 
 black --diff --check --quiet .
 isort --diff --check --quiet .
